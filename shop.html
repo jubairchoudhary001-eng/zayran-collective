@@ -29,15 +29,16 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
-32 @media (min-width: 1024px) {
-33   .products-display-grid {
-34     grid-template-columns: repeat(4, 1fr);
-35   }
-36   }  <-- Yeh extra bracket error kar raha hai!
-37   .header {
-38     text-align: center;
-39     margin-bottom: 40px;
-40   }
+@media (min-width: 1024px) {
+  .products-display-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
 
         .header h1 {
             color: #D4AF37;
@@ -97,8 +98,8 @@
         <h1>New Arrivals & Articles</h1>
         <p>Explore our latest premium thrift & branded clothes</p>
     </div>
-
-    <div class="product-grid">
+<div class="site-container"><div class="products-display-grid">
+    
 
         <div class="card">
             <h3>Nike Sweatshirt</h3>
@@ -115,7 +116,7 @@
             <span class="price">₹999</span>
             <a class="card-btn" href="https://wa.me/919105704376?text=Hi,%20I%20want%20to%20order%20the%20Tommy%20Shirt">Order on WhatsApp</a>
         </div>
-
+</div>
     </div>
 
 </body>
