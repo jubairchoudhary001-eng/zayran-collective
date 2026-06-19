@@ -2,230 +2,538 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>New Arrivals - Zayran Collection</title>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zayran Collection - Premium Thrift & Branded Store</title>
     <style>
-        /* AAPKA SAARA CSS CODE IN DONO TAGS KE BEECH MEIN HONA CHAHIYE */
-       .product-card {
-        background-color: #1a1a1a;
-        border: 1px solid #333;
-        border-radius: 12px;
-        padding: 15px;
-        max-width: 300px;
-        position: relative;
-        font-family: sans-serif;
-        color: #fff;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-    
-    .product-badge {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        background-color: #ffcc00;
-        color: #000;
-        padding: 4px 8px;
-        font-size: 12px;
-        font-weight: bold;
-        border-radius: 6px;
-    }
-    
-    .product-img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        border-radius: 8px;
-        background-color: #2a2a2a;
-    }
-    
-    .product-details h3 {
-        margin: 12px 0 5px 0;
-        font-size: 18px;
-    }
-    
-    .specs {
-        color: #aaa;
-        font-size: 14px;
-        margin: 0 0 10px 0;
-    }
-    
-    .price {
-        font-size: 20px;
-        font-weight: bold;
-        color: #ffcc00;
-        margin: 0 0 15px 0;
-    }
-    
-    .card-buttons {
-        display: flex;
-        gap: 10px;
-    }
-    
-    .btn-wishlist {
-        background: #2a2a2a;
-        border: 1px solid #444;
-        border-radius: 6px;
-        cursor: pointer;
-        padding: 10px;
-    }
-    
-    .btn-whatsapp {
-        flex-grow: 1;
-        background-color: #ffcc00;
-        color: #000;
-        border: none;
-        padding: 10px;
-        font-weight: bold;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: 0.2s;
-    }
-    
-    .btn-whatsapp:hover {
-        background-color: #e6b800;
-    }
-        body {
-            background-color: #121212;
-            color: white;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
+        :root {
+            --bg-color: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --primary-color: #ffcc00;
+            --text-color: #ffffff;
+            --text-muted: #aaaaaa;
+            --border-color: #333333;
         }
 
-        .site-container {
-            width: 100%;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        /* NAVIGATION BAR */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(26, 26, 26, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
         }
 
-        .products-display-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        @media (min-width: 768px) {
-            .products-display-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .products-display-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }        
-.site-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-.products-display-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-@media (min-width: 768px) {
-  .products-display-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media (min-width: 1024px) {
-  .products-display-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-        .header h1 {
-            color: #D4AF37;
-        }
-        .back-btn {
-            background-color: transparent;
-            color: #D4AF37;
-            border: 1px solid #D4AF37;
-            padding: 8px 15px;
-            border-radius: 5px;
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--primary-color);
             text-decoration: none;
-            display: inline-block;
-            margin-bottom: 20px;
         }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .wishlist-icon-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .badge-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: red;
+            color: white;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+
+        /* SEARCH & FILTER CONTROLS */
+        .controls-section {
+            max-width: 1200px;
+            margin: 30px auto 10px auto;
+            padding: 0 5%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-container {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 12px 20px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            color: white;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .search-container input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .filter-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .filter-container select {
+            padding: 10px 15px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* CATALOG TITLE */
+        .main-title {
+            text-align: center;
+            margin: 20px 0;
+            color: var(--primary-color);
+            font-size: 28px;
+        }
+
+        /* PRODUCT GRID */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 20px 5%;
         }
-        .card {
-            background-color: #1e1e1e;
+
+        /* DYNAMIC PRODUCT CARD */
+        .product-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            background-color: #252525;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Agar image miss ho toh fallback style */
+        .product-img[alt] {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
             padding: 20px;
-            border-radius: 10px;
-            border: 1px solid #333;
-            text-align: left;
+            color: var(--text-muted);
         }
-        .card h3 {
-            margin-top: 0;
-            color: white;
+
+        .card-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background-color: var(--primary-color);
+            color: #000;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
         }
-        .price {
-            color: #D4AF37;
+
+        .wishlist-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.6);
+            border: none;
+            color: #fff;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.2s;
+        }
+
+        .wishlist-btn.active {
+            color: #ff3366;
+        }
+
+        .product-details {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .product-brand {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        .product-title {
+            font-size: 18px;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .product-spec {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .rating-section {
+            font-size: 13px;
+            color: #ffcc00;
+        }
+        .review-count {
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .current-price {
             font-size: 20px;
             font-weight: bold;
-            display: block;
-            margin: 10px 0;
+            color: #fff;
         }
-        .card-btn {
-            background-color: #D4AF37;
-            color: black;
-            padding: 10px;
-            text-decoration: none;
-            display: block;
-            text-align: center;
+
+        .old-price {
+            font-size: 14px;
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
+
+        .whatsapp-cta {
+            background-color: var(--primary-color);
+            color: #000;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
             font-weight: bold;
-            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: 0.2s;
+            margin-top: 10px;
+        }
+
+        .whatsapp-cta:hover {
+            background-color: #e6b800;
+        }
+
+        /* FOOTER & T&C SECTION */
+        footer {
+            background-color: var(--card-bg);
+            padding: 40px 5%;
+            margin-top: 50px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-sec h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .footer-sec p, .footer-sec li {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.8;
+            list-style: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid var(--border-color);
+            font-size: 13px;
+            color: var(--text-muted);
         }
     </style>
 </head>
 <body>
 
-    <a href="index.html" class="back-btn">← Back to Home</a>
-
-    <div class="header">
-        <h1>New Arrivals & Articles</h1>
-        <p>Explore our latest premium thrift & branded clothes</p>
-    </div>
-<div class="site-container"><div class="products-display-grid">
-    
-
-        <div class="card">
-            <h3>Nike Sweatshirt</h3>
-            <p style="color:#B3B3B3; margin: 5px 0;">Condition: 9.5/10</p>
-            <p style="color:#B3B3B3; margin: 5px 0;">Size: L</p>
-            <span class="price">₹1499</span>
-            <a class="card-btn" href="https://wa.me/919105704376?text=Hi,%20I%20want%20to%20order%20the%20Nike%20Sweatshirt">Order on WhatsApp</a>
+    <header>
+        <div class="navbar">
+            <a href="#" class="logo">Zayran Collection</a>
+            <div class="nav-icons">
+                <button class="wishlist-icon-btn" onclick="alert('Wishlist feature connected! Scroll to check saved items.')">
+                    ❤️ <span class="badge-count" id="wishlist-badge">0</span>
+                </button>
+            </div>
         </div>
+    </header>
 
-        <div class="card">
-            <h3>Tommy Hilfiger Shirt</h3>
-            <p style="color:#B3B3B3; margin: 5px 0;">Condition: 9/10</p>
-            <p style="color:#B3B3B3; margin: 5px 0;">Size: M</p>
-            <span class="price">₹999</span>
-            <a class="card-btn" href="https://wa.me/919105704376?text=Hi,%20I%20want%20to%20order%20the%20Tommy%20Shirt">Order on WhatsApp</a>
+    <section class="controls-section">
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search brands, items (e.g., Nike, Zara)..." oninput="applyFilters()">
         </div>
-</div>
-    </div>
+        <div class="filter-container">
+            <select id="size-filter" onchange="applyFilters()">
+                <option value="all">All Sizes</option>
+                <option value="S">Size: S</option>
+                <option value="M">Size: M</option>
+                <option value="L">Size: L</option>
+                <option value="XL">Size: XL</option>
+            </select>
+            <select id="condition-filter" onchange="applyFilters()">
+                <option value="all">All Conditions</option>
+                <option value="9.5">9.5/10 (Top)</option>
+                <option value="9">9/10 (Excellent)</option>
+                <option value="8.5">8.5/10 (Good)</option>
+            </select>
+        </div>
+    </section>
 
+    <h2 class="main-title">New Arrivals & Premium Catalog</h2>
+
+    <main class="product-grid" id="product-container">
+        </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-sec">
+                <h4>📞 Customer Support</h4>
+                <p><b>Email:</b> zayrancollection001@gmail.com</p>
+                <p><b>Phone / WhatsApp:</b> +91 91057 04376</p>
+            </div>
+            <div class="footer-sec">
+                <h4>📝 Terms & Conditions</h4>
+                <ul>
+                    <li>✨ All items are premium thrifted/branded products.</li>
+                    <li>🟢 Cash on Delivery (COD) is available nationwide.</li>
+                    <li>🔄 <b>7-Days Return & Exchange:</b> Agar size issue ho ya pasand na aaye toh 7 dino me exchange karein.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Zayran Collection. Built with ❤️ for premium fashion.
+        </div>
+    </footer>
+
+    <script>
+        // AAPKA COMPLETE PRODUCT CATALOG DATA HERE
+        const catalogProducts = [
+            {
+                id: 1,
+                name: "Nike Vintage Sweatshirt",
+                brand: "Nike",
+                condition: "9.5",
+                size: "L",
+                price: 1499,
+                oldPrice: 2999,
+                badge: "New Arrival",
+                image: "images/nike-sweatshirt.jpg", // Create 'images' folder in GitHub & save file there
+                rating: "⭐⭐⭐⭐★",
+                reviews: 14
+            },
+            {
+                id: 2,
+                name: "Tommy Hilfiger Casual Shirt",
+                brand: "Tommy Hilfiger",
+                condition: "9",
+                size: "M",
+                price: 999,
+                oldPrice: 1999,
+                badge: "Popular",
+                image: "images/tommy-shirt.jpg",
+                rating: "⭐⭐⭐⭐⭐",
+                reviews: 8
+            },
+            {
+                id: 3,
+                name: "Lacoste Classic Polo",
+                brand: "Lacoste",
+                condition: "8.5",
+                size: "L",
+                price: 1299,
+                oldPrice: 2499,
+                badge: "COD Available",
+                image: "images/lacoste-polo.jpg",
+                rating: "⭐⭐⭐⭐★",
+                reviews: 22
+            },
+            {
+                id: 4,
+                name: "Zara Slim Fit Denim Jacket",
+                brand: "Zara",
+                condition: "9.5",
+                size: "M",
+                price: 1799,
+                oldPrice: 3499,
+                badge: "Premium Thrift",
+                image: "images/zara-jacket.jpg",
+                rating: "⭐⭐⭐⭐⭐",
+                reviews: 5
+            }
+        ];
+
+        let wishlist = JSON.parse(localStorage.getItem('zayran_wishlist')) || [];
+
+        // RENDER PRODUCTS TO SCREEN
+        function displayProducts(productsList) {
+            const container = document.getElementById('product-container');
+            container.innerHTML = "";
+
+            if(productsList.length === 0) {
+                container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #aaa; padding: 40px;">No premium products found matching your search.</div>`;
+                return;
+            }
+
+            productsList.forEach(product => {
+                const isSaved = wishlist.includes(product.id) ? 'active' : '';
+                const cardHTML = `
+                    <div class="product-card">
+                        <div class="image-wrapper">
+                            <span class="card-badge">${product.badge}</span>
+                            <button class="wishlist-btn ${isSaved}" onclick="toggleWishlist(${product.id}, this)">❤️</button>
+                            <img class="product-img" src="${product.image}" alt="${product.name} (Image not uploaded)">
+                        </div>
+                        <div class="product-details">
+                            <span class="product-brand">${product.brand}</span>
+                            <h3 class="product-title">${product.name}</h3>
+                            <p class="product-spec"><b>Condition:</b> ${product.condition}/10 &nbsp;|&nbsp; <b>Size:</b> ${product.size}</p>
+                            <div class="rating-section">${product.rating} <span class="review-count">(${product.reviews})</span></div>
+                            <div class="price-row">
+                                <span class="current-price">₹${product.price}</span>
+                                <span class="old-price">₹${product.oldPrice}</span>
+                            </div>
+                            <button class="whatsapp-cta" onclick="redirectToWhatsApp('${product.name}', '${product.size}', '${product.price}')">
+                                Order via WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += cardHTML;
+            });
+            document.getElementById('wishlist-badge').innerText = wishlist.length;
+        }
+
+        // LIVE FILTER & SEARCH LOGIC
+        function applyFilters() {
+            const searchVal = document.getElementById('search-input').value.toLowerCase();
+            const sizeVal = document.getElementById('size-filter').value;
+            const conditionVal = document.getElementById('condition-filter').value;
+
+            const filtered = catalogProducts.filter(p => {
+                const matchesSearch = p.name.toLowerCase().includes(searchVal) || p.brand.toLowerCase().includes(searchVal);
+                const matchesSize = (sizeVal === 'all') || (p.size === sizeVal);
+                const matchesCondition = (conditionVal === 'all') || (p.condition === conditionVal);
+
+                return matchesSearch && matchesSize && matchesCondition;
+            });
+
+            displayProducts(filtered);
+        }
+
+        // WISHLIST MEMORY FUNCTION
+        function toggleWishlist(id, element) {
+            if (wishlist.includes(id)) {
+                wishlist = wishlist.filter(item => item !== id);
+                element.classList.remove('active');
+            } else {
+                wishlist.push(id);
+                element.classList.add('active');
+            }
+            localStorage.setItem('zayran_wishlist', JSON.stringify(wishlist));
+            document.getElementById('wishlist-badge').innerText = wishlist.length;
+        }
+
+        // AUTOMATED WHATSAPP ORDER FORMATTING
+        function redirectToWhatsApp(name, size, price) {
+            const phoneNumber = "919105704376"; 
+            const message = `Hello Zayran Collection! 👋\nI want to order this product:\n\n📦 *Product:* ${name}\n📏 *Size:* ${size}\n💰 *Price:* ₹${price}\n\nPlease confirm availability and share payment details. Thanks!`;
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+        }
+
+        // INITIAL LOAD
+        window.onload = () => {
+            displayProducts(catalogProducts);
+        };
+    </script>
 </body>
 </html>
